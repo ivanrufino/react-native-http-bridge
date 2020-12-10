@@ -75,7 +75,7 @@ public class Server extends NanoHTTPD {
         request.putString("requestId", requestId);
         Map<String, String> queryParams = session.getParms();
         if (queryParams.size() > 0) {
-             request.putString("params", queryParams);
+             request.putString("params", toString(queryParams));
         }
         
         Map<String, String> files = new HashMap<>();
