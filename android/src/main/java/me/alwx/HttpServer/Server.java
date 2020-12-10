@@ -71,6 +71,7 @@ public class Server extends NanoHTTPD {
         WritableMap request = Arguments.createMap();
         request.putString("url", session.getUri());
         request.putString("type", method.name());
+        request.putString("params", session.getParms());
         request.putString("requestId", requestId);
         
         Map<String, String> files = new HashMap<>();
