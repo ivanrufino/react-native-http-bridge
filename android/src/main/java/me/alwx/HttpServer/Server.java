@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
