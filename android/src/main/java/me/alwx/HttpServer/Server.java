@@ -1,5 +1,6 @@
 package me.alwx.HttpServer;
 
+import java.io.UnsupportedEncodingException;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.NanoHTTPD.Response;
 import fi.iki.elonen.NanoHTTPD.Response.Status;
