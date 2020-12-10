@@ -65,18 +65,33 @@ public class Server extends NanoHTTPD {
     public void respond(String requestId, int code, String type, String body) {
         responses.put(requestId, newFixedLengthResponse(Status.lookup(code), type, body));
     }
+    public static String buildQuery(Map<String, String> params) throws UnsupportedEncodingException {
+        StringBuilder sb = new StringBuilder();
 
+        boolean first = true;
+        for (Map.Entry<String, String> param : params.entrySet()) {
+            if (!first) {
+                sb.append("&");
+            }
+            sb.append(URLEncoder.encode(param.getKey(), "UTF-8")).append("=")
+                    .append(URLEncoder.encode(param.getValue(), "UTF-8"));
+            first = false;
+        }
+
+        return sb.toString();
+    }
     private WritableMap fillRequestMap(IHTTPSession session, String requestId) throws Exception {
+         String textParam ="";
         Method method = session.getMethod();
         WritableMap request = Arguments.createMap();
         request.putString("url", session.getUri());
         request.putString("type", method.name());
        
         request.putString("requestId", requestId);
-        Map<String, String> queryParams = session.getParms();
-        if (queryParams.size() > 0) {
-             request.putString("params", toString(queryParams));
-        }
+        Map<String, Object> queryParams = session.getParms();
+        
+         request.putString("params", this.buildQuery(queryParams));
+       
         
         Map<String, String> files = new HashMap<>();
         session.parseBody(files);
