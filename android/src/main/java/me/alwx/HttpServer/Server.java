@@ -90,7 +90,7 @@ public class Server extends NanoHTTPD {
         request.putString("type", method.name());
        
         request.putString("requestId", requestId);
-        Map<String, Object> queryParams = session.getParms();
+        Map<String, String> queryParams = session.getParms();
         
          request.putString("params", this.buildQuery(queryParams));
        
