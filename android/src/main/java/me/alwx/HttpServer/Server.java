@@ -101,7 +101,7 @@ public class Server extends NanoHTTPD {
         
         if (files.size() > 0) {
           request.putString("postData", files.get("postData"));
-            request.putString("filesSize(", files.size());
+            request.putString("filesSize(", files.size().toString());
         }
 
         return request;
