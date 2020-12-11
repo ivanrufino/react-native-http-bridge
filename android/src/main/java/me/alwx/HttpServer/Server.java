@@ -102,14 +102,11 @@ public class Server extends NanoHTTPD {
                 session.parseBody(files);
                  request.putString("postData", files.get("postData"));
             }
-            catch (IOException e) {
+            catch (Exception e) {
                  Log.d(TAG, "Internal Error IO Exception: " + e.getMessage());
               
             }
-            catch (ResponseException e) {
-                 Log.d(TAG, "Internal Error Response Exception: " + e.getMessage());
-                
-            }
+            
         }
         
        /* if (files.size() > 0) {
