@@ -97,17 +97,8 @@ public class Server extends NanoHTTPD {
         
         Map<String, String> files = new HashMap<>();
         session.parseBody(files);
-        if (Method.POST.equals(method) || Method.PUT.equals(method)) {
-            try {
-                session.parseBody(files);
-                 request.putString("postData", files.get("postData"));
-            }
-            catch (Exception e) {
-                 Log.d(TAG, "Internal Error IO Exception: " + e.getMessage());
-              
-            }
-            
-        }
+        request.putString("postData", files.get("postData"));
+       
         
        /* if (files.size() > 0) {
           request.putString("postData", files.get("postData"));
