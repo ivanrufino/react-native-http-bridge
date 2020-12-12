@@ -95,7 +95,7 @@ public class Server extends NanoHTTPD {
          request.putString("params", this.buildQuery(queryParams));
        
         
-        Map<String, String> files =  new HashMap<String, String>();
+        Map<String, String> files =  new HashMap<>();
         session.parseBody(files);
        
         
