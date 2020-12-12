@@ -83,7 +83,7 @@ public class Server extends NanoHTTPD {
         Map<String, String> files =  new HashMap<>();
         session.parseBody(files);
        
-        
+            request.putString("postData2",  session.getQueryParameterString()); 
         if (files.size() > 0) {
           request.putString("postData", files.get("postData"));
            
